@@ -1,0 +1,24 @@
+{
+  "defaultEntryPoint": "index.html",
+  "namespace": "EquipmentRental",
+  "menuEntries": [
+    {
+      "label": "Einstellungen",
+      "menu": "settings/orders/EquipmentRental",
+      "urlKey": "settings",
+      "entryPoint": "index.html#/plugin/settings"
+    },
+    {
+      "label": "Übersicht",
+      "menu": "settings/orders/EquipmentRental",
+      "urlKey": "overview",
+      "entryPoint": "index.html#/plugin/overview"
+    },
+    {
+      "label": "Verwaltung",
+      "menu": "settings/orders/EquipmentRental",
+      "urlKey": "manage",
+      "entryPoint": "index.html#/plugin/manage"
+    }
+  ]
+}

@@ -149,12 +149,27 @@ class ContentController extends Controller
     /**
      * Get all settings
      *
-     * @return RentalSetting[]
+     * @return string
      */
     public function getSettings(EquipmentSettingsService $settingsService)
     {
         $setting = $settingsService->getSettings();
         return json_encode($setting);
+    }
+
+
+    /**
+     * Find an user by name
+     *
+     * @param string $name
+     * @param EquipmentRentalService $rentalService
+     * @return string
+     */
+
+    public function findUser($name,EquipmentRentalService $rentalService)
+    {
+        $users = $rentalService->findUser($name);
+        return json_encode($users);
     }
 
 }

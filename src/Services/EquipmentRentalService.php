@@ -4,6 +4,7 @@ namespace EquipmentRental\Services;
 use Exception;
 use EquipmentRental\Contracts\RentalItemRepositoryContract;
 use EquipmentRental\Models\RentalHistory;
+use Illuminate\Database\Eloquent\Collection;
 use Plenty\Exceptions\ValidationException;
 use Plenty\Modules\Account\Contact\Models\Contact;
 use Plenty\Modules\Item\Variation\Models\Variation;
@@ -442,5 +443,31 @@ class EquipmentRentalService
         return $mailer->sendHtml($emailHtml,[
             $user->email
         ],$emailTemplateTopic);
+    }
+
+    /**
+     * Find an user by name
+     *
+     * @param string $name
+     * @throws /Exception
+     * @return Collection
+     */
+
+    public function findUser($name)
+    {
+        /** @var Collection $findUsers */
+        $findUsers = $this->userRepository->findByName($name);
+        $users = [];
+        foreach($findUsers as $findUser)
+        {
+            $name = explode(" ",$findUser->real_name);
+            $user = pluginApp(RentalUser::class);
+            $user->id = $findUser->id;
+            $user->firstname = !empty($name[0]) ? $name[0] : $findUser->real_name;
+            $user->lastname = !empty($name[1]) ? $name[1] : "";
+            $user->email = $findUser->user_email;
+            array_push($users,$user);
+        }
+        return array_slice($users,0,3);
     }
 }

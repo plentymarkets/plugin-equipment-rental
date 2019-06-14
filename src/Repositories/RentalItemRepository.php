@@ -89,10 +89,10 @@ class RentalItemRepository implements RentalItemRepositoryContract
         $database = pluginApp(DataBase::class);
 
         $statusType = array(
-            0 => "Normal",
-            1 => "Defekt",
-            2 => "Entwendet",
-            3 => "Verloren",
+            0 => 'Normal',
+            1 => 'Defekt',
+            2 => 'Entwendet',
+            3 => 'Verloren',
         );
 
         $comment = !empty($data["comment"]) ? $data["comment"] : "";

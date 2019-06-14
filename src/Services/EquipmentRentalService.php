@@ -5,9 +5,11 @@ use Exception;
 use EquipmentRental\Contracts\RentalItemRepositoryContract;
 use EquipmentRental\Models\RentalHistory;
 use Illuminate\Database\Eloquent\Collection;
+use Plenty\Configuration\Contracts\Configuration;
 use Plenty\Exceptions\ValidationException;
 use Plenty\Modules\Account\Contact\Models\Contact;
 use Plenty\Modules\Item\Variation\Models\Variation;
+use Plenty\Modules\Plugin\Contracts\ConfigurationRepositoryContract;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 use EquipmentRental\Models\RentalItem;
 use EquipmentRental\Models\RentalUser;
@@ -17,6 +19,7 @@ use EquipmentRental\Validators\RentalMailValidator;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Account\Contact\Models\ContactType;
 use Plenty\Modules\Account\Contact\Models\ContactOption;
+use Plenty\Modules\System\Contracts\SystemInformationRepositoryContract;
 use Plenty\Modules\User\Contracts\UserRepositoryContract;
 use Plenty\Plugin\Http\Request;
 use Plenty\Modules\Item\Variation\Contracts\VariationSearchRepositoryContract;
@@ -255,7 +258,7 @@ class EquipmentRentalService
      */
     public function getDevices(Request $request)
     {
-        $withString = "itemImages,item,variationAttributeValues,properties";
+        $withString = "itemImages,images,item,variationAttributeValues,properties";
         $with = array_flip(explode(',', $withString));
         $this->variationController->setSearchParams(['with' => $with]);
         $this->variationController->setSearchFilter("variationCategory.hasCategory",["categoryId" => $request->get("categoryId",'')]);
@@ -264,8 +267,12 @@ class EquipmentRentalService
         $result = $this->variationController->search()->toArray();
 
         if(is_null($result)){
-            throw new \Exception('Fehler beim Auslesen der Artikel', 400);
+            throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
+
+        /** @var SystemInformationRepositoryContract $systemInformation */
+        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
+        $actual_link = $systemInformation->loadValue("baseUrlSsl");
 
         $variations=[];
         foreach($result["entries"] as $variation)
@@ -274,7 +281,6 @@ class EquipmentRentalService
             $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
 
             $categoryInfo = $this->categoryRepo->get($request->get("categoryId",''));
-            $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
             if(!is_null($categoryInfo) && !empty($categoryInfo->details[0]->imagePath)) {
                 $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details[0]->imagePath);
             }
@@ -282,13 +288,11 @@ class EquipmentRentalService
                 $imageSettings = $this->itemImageSettingsRepo->get();
                 $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
             }
-            $defaultImage = str_replace("master.login","master",$defaultImage); //test
-
 
             $rentalDevice = pluginApp(RentalDevice::class);
             $rentalDevice->id = $variation["id"];
             $rentalDevice->name = $variation["name"];
-            $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;  //$variation->image
+            $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
             $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
             $rentalDevice->attributes = $variation["variationAttributeValues"];
             $rentalDevice->properties = $variation["properties"];

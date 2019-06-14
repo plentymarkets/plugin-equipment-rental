@@ -5,7 +5,6 @@ namespace EquipmentRental\Controllers;
 
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
-use Plenty\Plugin\Templates\Twig;
 use EquipmentRental\Contracts\RentalItemRepositoryContract;
 use EquipmentRental\Services\EquipmentRentalService;
 use EquipmentRental\Services\EquipmentSettingsService;
@@ -13,11 +12,6 @@ use Exception;
 
 class ContentController extends Controller
 {
-    public function sayHello(Twig $twig):string
-    {
-        return $twig->render('HelloWorld::content.hello');
-    }
-
     /**
      * @param Request $request
      * @param EquipmentRentalService $rentalService
@@ -55,7 +49,7 @@ class ContentController extends Controller
     /**
      * @param  Request $request
      * @param EquipmentRentalService $rentalService
-     * @throws  \Exception
+     * @throws  Exception
      * @return string
      */
     public function rentDevice(Request $request, EquipmentRentalService $rentalService): string
@@ -70,7 +64,7 @@ class ContentController extends Controller
      * @param RentalItemRepositoryContract  $rentalItemRepo
      * @return string
      */
-    public function deleteDevice(int $id,Request $request, RentalItemRepositoryContract $rentalItemRepo): string
+    public function deleteDevice(int $id, Request $request, RentalItemRepositoryContract $rentalItemRepo): string
     {
         $deleteDevice = $rentalItemRepo->deleteDevice($id,$request->all());
         return json_encode($deleteDevice);
@@ -100,7 +94,7 @@ class ContentController extends Controller
     /**
      * @param EquipmentRentalService $rentalService
      * @param Request $request
-     * @throws /Exception
+     * @throws Exception
      * @return string
      */
     public function remindEmail(Request $request, EquipmentRentalService $rentalService): string
@@ -114,7 +108,7 @@ class ContentController extends Controller
      *
      * @param Request $request
      * @param EquipmentSettingsService $settingsService
-     * @throws /Expception
+     * @throws Exception
      * @return string
      */
     public function setSetting(Request $request,EquipmentSettingsService $settingsService)
@@ -134,8 +128,8 @@ class ContentController extends Controller
      *
      * @param Request $request
      * @param EquipmentSettingsService $settingsService
-     * @return RentalSetting[]
      * @throws Exception
+     * @return string
      */
     public function getSetting(Request $request,EquipmentSettingsService $settingsService)
     {
@@ -149,6 +143,7 @@ class ContentController extends Controller
     /**
      * Get all settings
      *
+     * @param EquipmentSettingsService $settingsService
      * @return string
      */
     public function getSettings(EquipmentSettingsService $settingsService)

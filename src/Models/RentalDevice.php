@@ -30,6 +30,7 @@ class RentalDevice extends Model
     public $properties      = '';
     public $created_at      = '';
     public $user;
+    public $rent_until      = 0;
 
     /**
      * @return string

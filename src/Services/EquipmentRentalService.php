@@ -298,6 +298,7 @@ class EquipmentRentalService
             $rentalDevice->properties = $variation["properties"];
             $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
             $rentalDevice->created_at = $variation["created_at"];
+            $rentalDevice->rent_until = $device["rent_until"];
             array_push($variations,$rentalDevice);
         }
         return $variations;
@@ -346,6 +347,7 @@ class EquipmentRentalService
         {
             $rentedDevice = pluginApp(RentalHistory::class);
             $rentedDevice->id = $device->id;
+            $rentedDevice->name = $this->getNameByVariationId($device->deviceId);
             $rentedDevice->deviceId = $device->deviceId;
             $rentedDevice->user = $this->getUserDataById($device->userId);
             $rentedDevice->adminUser = $this->getAdminUserDataById($device->adminUserId);

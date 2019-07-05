@@ -17,6 +17,7 @@ use Plenty\Modules\Plugin\DataBase\Contracts\Model;
  * @property int $rent_until
  * @property int     $created_at
  * @property int     $status
+ * @property string $name
  */
 class RentalHistory extends Model
 {
@@ -33,6 +34,7 @@ class RentalHistory extends Model
     public $rent_until      = 0;
     public $created_at      = 0;
     public $status          = 0;
+    public $name            = '';
 
     /**
      * @return string

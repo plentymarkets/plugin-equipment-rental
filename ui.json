@@ -9,13 +9,13 @@
       "entryPoint": "index.html#/plugin/settings"
     },
     {
-      "label": "Übersicht",
+      "label": "Geräteübersicht",
       "menu": "settings/orders/EquipmentRental",
       "urlKey": "overview",
       "entryPoint": "index.html#/plugin/overview"
     },
     {
-      "label": "Verwaltung",
+      "label": "Verleihübersicht",
       "menu": "settings/orders/EquipmentRental",
       "urlKey": "manage",
       "entryPoint": "index.html#/plugin/manage"

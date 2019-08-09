@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="15f8c7f4-57f2-41c1-bf7d-abd6f0bfab97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-light-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-light-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-regular-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-regular-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-semibold-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-semibold-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/error-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon_16x16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon_32x32.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_16x9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_4x3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/login_background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_long_white.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_longer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_sw.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/images/plenty_login_background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/lang/locale-de.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/locale-de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/lang/locale-en.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/locale-en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-de.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-en.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/styles/_loading.icon.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/styles/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/styles/fonts/_plentyicons.font.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/styles/fonts/_plentysans.font.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/styles/icons.glob.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-compact.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-dark.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-filled-buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-light.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-xmas.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/vendors~app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/vendors~app~vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/vendors~polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/vendors~vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangDe.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangDe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangEn.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangEn.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Services/EquipmentRentalService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="60" column="65" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/Variation/InternalVariationSearchRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/DataExchange/Services/DataProviders/Items.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5731">
+              <caret line="438" column="25" selection-start-line="438" selection-start-column="25" selection-end-line="438" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Contracts/RentalItemRepositoryContract.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Services/EquipmentSettingsService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Repositories/RentalItemRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>SystemInformation</find>
+      <find>getdevice</find>
+      <find>$variationController</find>
+      <find>variationCategory.hasCategory</find>
+      <find>getdevices</find>
+      <find>variationController</find>
+      <find>VariationSearchRepositoryContract</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../pl" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="962" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="15f8c7f4-57f2-41c1-bf7d-abd6f0bfab97" name="Default Changelist" comment="" />
+      <created>1562910769849</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562910769849</updated>
+      <workItem from="1562910771241" duration="28000" />
+      <workItem from="1564121321398" duration="528000" />
+      <workItem from="1565347040742" duration="278000" />
+      <workItem from="1565347852381" duration="379000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1213000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="962" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2002442" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Contracts/RentalItemRepositoryContract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/EquipmentSettingsService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repositories/RentalItemRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/DataExchange/Services/DataProviders/Items.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5731">
+          <caret line="438" column="25" selection-start-line="438" selection-start-column="25" selection-end-line="438" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/EquipmentRentalService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="60" column="65" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/Variation/InternalVariationSearchRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

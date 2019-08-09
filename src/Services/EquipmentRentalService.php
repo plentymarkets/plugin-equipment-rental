@@ -56,12 +56,12 @@ class EquipmentRentalService
     private $settingsService;
 
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
-                                ContactRepositoryContract $contactRepo,
-                                UserRepositoryContract $userRepository,
-                                VariationSearchRepositoryContract $variationController,
-                                ItemImageSettingsRepositoryContract $itemImageSettingsRepo,
-                                CategoryRepositoryContract $categoryRepo,
-                                EquipmentSettingsService $settingsService
+        ContactRepositoryContract $contactRepo,
+        UserRepositoryContract $userRepository,
+        VariationSearchRepositoryContract $variationController,
+        ItemImageSettingsRepositoryContract $itemImageSettingsRepo,
+        CategoryRepositoryContract $categoryRepo,
+        EquipmentSettingsService $settingsService
 
     )
     {
@@ -302,6 +302,55 @@ class EquipmentRentalService
             array_push($variations,$rentalDevice);
         }
         return $variations;
+    }
+
+    /**
+     * Get article with device informations
+     *
+     * @param Request $request
+     * @return array
+     * @throws /Exception
+     */
+    public function getDeviceById(Request $request)
+    {
+        $id = $request->get("id",'');
+        /** @var VariationRepositoryContract $variationRepository */
+        $variationRepository = pluginApp(VariationRepositoryContract::class);
+        $variation = $variationRepository->findById($id);
+
+        if(is_null($variation)){
+            throw new Exception('Fehler beim Auslesen der Artikel', 400);
+        }
+
+        /** @var SystemInformationRepositoryContract $systemInformation */
+        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
+        $actual_link = $systemInformation->loadValue("baseUrlSsl");
+
+        $variations=[];
+
+        $device = $this->getDevice($variation["id"]);
+        $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
+
+        $categoryInfo = $this->categoryRepo->get($request->get("categoryId",''));
+        if(!is_null($categoryInfo) && !empty($categoryInfo->details[0]->imagePath)) {
+            $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details[0]->imagePath);
+        }
+        else{
+            $imageSettings = $this->itemImageSettingsRepo->get();
+            $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
+        }
+
+        $rentalDevice = pluginApp(RentalDevice::class);
+        $rentalDevice->id = $variation["id"];
+        $rentalDevice->name = $variation["name"];
+        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
+        $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
+        $rentalDevice->attributes = $variation["variationAttributeValues"];
+        $rentalDevice->properties = $variation["properties"];
+        $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
+        $rentalDevice->created_at = $variation["created_at"];
+        $rentalDevice->rent_until = $device["rent_until"];
+        return $rentalDevice;
     }
 
     /**

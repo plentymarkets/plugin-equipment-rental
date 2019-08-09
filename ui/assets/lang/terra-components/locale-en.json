@@ -39,6 +39,7 @@
 	"terraFileInput": {
 		"choose": "Select",
 		"cancel": "Cancel",
+		"reset": "Reset",
 		"chooseFile": "Select file"
 	},
 	"terraSuggestionBox": {
@@ -117,7 +118,7 @@
 		"pause": "Pause",
 		"reset": "Reset"
 	},
-	"filter": {
+	"tcFilter": {
 		"search": "Search",
 		"reset": "Reset"
 	},

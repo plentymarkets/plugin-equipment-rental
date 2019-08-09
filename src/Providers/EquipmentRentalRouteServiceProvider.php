@@ -11,6 +11,7 @@ class EquipmentRentalRouteServiceProvider extends RouteServiceProvider
     public function map(Router $router)
     {
         $router->get('plugin/equipmentRental/rentalDevice','EquipmentRental\Controllers\ContentController@getDevices');
+        $router->get('plugin/equipmentRental/rentalDeviceById','EquipmentRental\Controllers\ContentController@getDeviceById');
         $router->get('plugin/equipmentRental/rentalDevice/{id}','EquipmentRental\Controllers\ContentController@getDevice')->where('id', '\d+');
         $router->get('plugin/equipmentRental/rentalDevice/{id}','EquipmentRental\Controllers\ContentController@getRentedDevice')->where('id', '\d+');
         $router->post('plugin/equipmentRental/rentalDevice','EquipmentRental\Controllers\ContentController@rentDevice');

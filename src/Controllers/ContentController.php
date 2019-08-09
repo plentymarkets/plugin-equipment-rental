@@ -25,6 +25,18 @@ class ContentController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param EquipmentRentalService $rentalService
+     * @throws /Exception
+     * @return string
+     */
+    public function getDeviceById(Request $request,EquipmentRentalService $rentalService): string
+    {
+        $devices = $rentalService->getDeviceById($request);
+        return json_encode($devices);
+    }
+
+    /**
      * @param int $deviceId
      * @param EquipmentRentalService $rentalService
      * @return string

@@ -179,4 +179,16 @@ class ContentController extends Controller
         return json_encode($users);
     }
 
+    /**
+     * @param Request $request
+     * @param EquipmentRentalService $rentalService
+     * @throws /Exception
+     * @return string
+     */
+    public function createItem(Request $request,EquipmentRentalService $rentalService): string
+    {
+        $device = $rentalService->createItem($request);
+        return json_encode($device);
+    }
+
 }

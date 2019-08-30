@@ -5,10 +5,16 @@ use Exception;
 use EquipmentRental\Contracts\RentalItemRepositoryContract;
 use EquipmentRental\Models\RentalHistory;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Plenty\Configuration\Contracts\Configuration;
 use Plenty\Exceptions\ValidationException;
+use Plenty\Legacy\Repositories\Item\ItemImage\ItemImageRepository;
 use Plenty\Modules\Account\Contact\Models\Contact;
+use Plenty\Modules\Item\Attribute\Contracts\AttributeRepositoryContract;
+use Plenty\Modules\Item\Item\Contracts\ItemRepositoryContract;
+use Plenty\Modules\Item\ItemImage\Contracts\ItemImageRepositoryContract;
 use Plenty\Modules\Item\Variation\Models\Variation;
+use Plenty\Modules\Item\VariationImage\Contracts\VariationImageRepositoryContract;
 use Plenty\Modules\Plugin\Contracts\ConfigurationRepositoryContract;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 use EquipmentRental\Models\RentalItem;
@@ -52,8 +58,11 @@ class EquipmentRentalService
     /** @var $categoryRepo */
     private $categoryRepo;
 
-    /** @var $settingsService */
+    /** @var EquipmentSettingsService */
     private $settingsService;
+
+    /** @var ItemRepositoryContract */
+    private $itemRepository;
 
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
         ContactRepositoryContract $contactRepo,
@@ -61,7 +70,8 @@ class EquipmentRentalService
         VariationSearchRepositoryContract $variationController,
         ItemImageSettingsRepositoryContract $itemImageSettingsRepo,
         CategoryRepositoryContract $categoryRepo,
-        EquipmentSettingsService $settingsService
+        EquipmentSettingsService $settingsService,
+        ItemRepositoryContract $itemRepository
 
     )
     {
@@ -72,6 +82,7 @@ class EquipmentRentalService
         $this->itemImageSettingsRepo = $itemImageSettingsRepo;
         $this->categoryRepo = $categoryRepo;
         $this->settingsService = $settingsService;
+        $this->itemRepository = $itemRepository;
     }
 
     /**
@@ -524,5 +535,100 @@ class EquipmentRentalService
             array_push($users,$user);
         }
         return array_slice($users,0,3);
+    }
+
+    /**
+     * Create an item
+     *
+     * @param Request $request
+     * @throws Exception
+     * @return Mixed
+     */
+    public function createItem(Request $request)
+    {
+        $name = $request->get("name","Testitem");
+        $categoryId = $request->get("categoryId",23);
+        $image = $request->get("image","");
+
+        $data = [
+            'variations' => []
+        ];
+        /** @var Variation $item */
+        $item = pluginApp(Variation::class);
+        $item->name = $name;
+        $item->variationCategories = [
+            ["categoryId" => $categoryId]
+        ];
+        $item->unit = ["unitId" => 1, "content" => 1];
+
+        array_push($data['variations'], $item->toArray());
+        try {
+            $createItem = $this->itemRepository->add($data);
+        } catch (Exception $e) {
+            throw new Exception($e->getTraceAsString());
+        }
+
+        //Upload and set image if $image is set
+        if(!empty($image))
+        {
+            $imageData = [
+                'itemId' => $createItem->id,
+                'uploadFileName' => $name.'_image.jpg',
+                $this->is_base64($image) ? 'uploadImageData' : 'uploadUrl' => $image
+            ];
+            /** @var ItemImageRepositoryContract $itemImage */
+            $itemImage = pluginApp(ItemImageRepositoryContract::class);
+            $uploadImage = (array) $itemImage->upload($imageData);
+
+            /** @var VariationImageRepositoryContract $variationItemIamge */
+            $variationItemIamge = pluginApp(VariationImageRepositoryContract::class);
+            $variationItemIamge->create([
+                'itemId' => $createItem['id'],
+                'variationId' => $createItem['variations'][0]['id'],
+                'imageId' => $uploadImage['id']
+            ]);
+        }
+
+        if(!empty($attributes))
+        {
+            $attributes = [
+                ['name' => 'Test']
+            ];
+            $variationAttributeValues = [];
+            foreach ($attributes as $attribute)
+            {
+                /** @var AttributeRepositoryContract $variationRepo */
+                $variationRepo = pluginApp(AttributeRepositoryContract::class); //Create or update variation
+                $attributeExist = true;
+                try {
+                    $variationRepo->findById($attribute['id']);
+                } catch (ModelNotFoundException $e) {
+                    $attributeExist = false;
+                }
+                if(!$attributeExist){
+                    $newAttribute = $variationRepo->create(['backendName' => $attribute['name']]);
+                    $newAttribute->id = $attribute['id'];
+                }
+                array_push($variationAttributeValues,['valueId' => $attribute['id']]);
+            }
+
+            /** @var VariationRepositoryContract $variationRepository */
+            $variationRepository = pluginApp(VariationRepositoryContract::class);
+            $variationRepository->update(['variationAttributeValues' => $variationAttributeValues],$createItem['variations'][0]['id']);
+            //$variationAttributeValues = [];
+        }
+
+        return $createItem;
+    }
+
+    /**
+     * Checks if a string is a base64 string
+     *
+     * @param string $str
+     * @return boolean
+     */
+    function is_base64($str)
+    {
+        return preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $str);
     }
 }

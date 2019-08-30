@@ -2,58 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f8c7f4-57f2-41c1-bf7d-abd6f0bfab97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentyicons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-light-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-light-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-regular-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-regular-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-semibold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/fonts/plentysans-semibold-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/ajax-loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/error-arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon_16x16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/favicon_32x32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_16x9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_4x3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/fpo_square.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/login_background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_long_white.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_longer.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/logo_plenty_sw.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/images/plenty_login_background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/lang/locale-de.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/locale-de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/lang/locale-en.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/locale-en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-de.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-en.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/assets/lang/terra-components/locale-en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/styles/_loading.icon.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/styles/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/styles/fonts/_plentyicons.font.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/styles/fonts/_plentysans.font.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/styles/icons.glob.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-compact.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-core.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-dark.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-filled-buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-light.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/assets/themes/theme-xmas.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/polyfills.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vendor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vendors~app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vendors~app~vendor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vendors~polyfills.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vendors~vendor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangDe.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangDe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangEn.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../pl/app/Policies/lang/PoliciesLangEn.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../localsystem.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../plugins.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../README_en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Vagrantfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/50-server.cnf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/httpsLoginVhost.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/login.plentymarkets.com.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/login.plentymarkets.com.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/sdkVhost.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/setup.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/vhost.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../files/xdebug.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/button/button_callisto_new_de.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/logconfig.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/modules.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/plenty_status/PlentyStatusDefinition_Order_de_0.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/soap/InternalSoapApi.wsdl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/startpage/3/BoxElement_PlentyNews_d8d5ec3a4373100b.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/startpage/3/StartpageConfig.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../master.plentymarkets.com/includes/var_sqllogin.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../plenty_config/RedisConfig.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../plenty_config/SystemConfig.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../run_always.sh" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,25 +34,63 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Services/EquipmentRentalService.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../sets/1/productive/EquipmentRental/src/Services/EquipmentRentalService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="60" column="65" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="65" />
+            <state relative-caret-position="835">
+              <caret line="575" column="43" selection-start-line="575" selection-start-column="43" selection-end-line="575" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/VariationImage/Contracts/VariationImageRepositoryContract.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/Item/Repositories/ItemRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="915">
+              <caret line="104" column="44" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/ItemImage/Contracts/ItemImageRepositoryContract.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-212">
+              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/ItemImage/ItemImageRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="366" column="20" selection-start-line="366" selection-start-column="20" selection-end-line="366" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/Variation/InternalVariationSearchRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+            <state relative-caret-position="1815">
+              <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
+              <folding>
+                <element signature="e#61#95#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/DataExchange/Services/DataProviders/Items.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5731">
+            <state relative-caret-position="6150">
               <caret line="438" column="25" selection-start-line="438" selection-start-column="25" selection-end-line="438" selection-end-column="25" />
             </state>
           </provider>
@@ -132,30 +142,43 @@
       <find>getdevices</find>
       <find>variationController</find>
       <find>VariationSearchRepositoryContract</find>
+      <find>createitem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../pl" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Services/EquipmentRentalService.php" />
+        <option value="$PROJECT_DIR$/../../../sets/1/productive/EquipmentRental/src/Services/EquipmentRentalService.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="962" />
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="master.login.plentymarkets.com" id="53214674-d749-4282-92cf-3c25b81b79b5" name="master.login.plentymarkets.com" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/../../../../../pl/public/backend" remote-root="/var/www/plenty/beta/pl/public/backend" />
+        </path_mappings>
+      </server>
+    </servers>
   </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1753" />
+    <option name="y" value="43" />
+    <option name="width" value="1920" />
+    <option name="height" value="1177" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,18 +203,51 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="productive" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="productive" type="462c0819:PsiDirectoryNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="productive" type="462c0819:PsiDirectoryNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="productive" type="462c0819:PsiDirectoryNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EquipmentRental" type="b2602c69:ProjectViewProjectNode" />
+              <item name="productive" type="462c0819:PsiDirectoryNode" />
+              <item name="EquipmentRental" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -219,17 +275,20 @@
       <workItem from="1564121321398" duration="528000" />
       <workItem from="1565347040742" duration="278000" />
       <workItem from="1565347852381" duration="379000" />
+      <workItem from="1565938961742" duration="13000" />
+      <workItem from="1567145450463" duration="1686000" />
+      <workItem from="1567147550074" duration="1849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1213000" />
+    <option name="totallyTimeSpent" value="4761000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="962" extended-state="0" />
+    <frame x="1753" y="43" width="1920" height="1177" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2002442" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18104367" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -246,8 +305,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946752" weight="0.15913372" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005325" side_tool="true" weight="0.32956687" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -262,7 +321,54 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/ItemImage/ItemImageRepository.php</url>
+          <line>368</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/../../../sets/1/productive/EquipmentRental/src/Services/EquipmentRentalService.php</url>
+          <line>546</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Services/EquipmentRentalService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8130">
+          <caret line="574" column="52" selection-start-line="574" selection-start-column="52" selection-end-line="574" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/Item/Repositories/ItemRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="104" column="44" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/Variation/InternalVariationSearchRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1815">
+          <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
+          <folding>
+            <element signature="e#61#95#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/DataExchange/Services/DataProviders/Items.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6150">
+          <caret line="438" column="25" selection-start-line="438" selection-start-column="25" selection-end-line="438" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Contracts/RentalItemRepositoryContract.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -284,24 +390,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/DataExchange/Services/DataProviders/Items.php">
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/VariationImage/Contracts/VariationImageRepositoryContract.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5731">
-          <caret line="438" column="25" selection-start-line="438" selection-start-column="25" selection-end-line="438" selection-end-column="25" />
+        <state relative-caret-position="277">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/EquipmentRentalService.php">
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Modules/Item/ItemImage/Contracts/ItemImageRepositoryContract.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="60" column="65" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="65" />
+        <state relative-caret-position="-212">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/Variation/InternalVariationSearchRepository.php">
+    <entry file="file://$PROJECT_DIR$/../../../../../pl/app/Legacy/Repositories/Item/ItemImage/ItemImageRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+        <state relative-caret-position="540">
+          <caret line="366" column="20" selection-start-line="366" selection-start-column="20" selection-end-line="366" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../sets/1/productive/EquipmentRental/src/Services/EquipmentRentalService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="575" column="43" selection-start-line="575" selection-start-column="43" selection-end-line="575" selection-end-column="43" />
         </state>
       </provider>
     </entry>

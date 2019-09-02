@@ -602,7 +602,7 @@ class EquipmentRentalService
                 $attributeExist = true;
                 try {
                     $variationRepo->findById($attribute['id']);
-                } catch (ModelNotFoundException $e) {
+                } catch (Exception $e) {
                     $attributeExist = false;
                 }
                 if(!$attributeExist){

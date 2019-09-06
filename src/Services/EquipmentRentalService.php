@@ -537,6 +537,58 @@ class EquipmentRentalService
     }
 
     /**
+     * Get a single device and map it
+     *
+     * @param int $variationId
+     * @param int $categoryId
+     * @return RentalDevice
+     * @throws /Exception
+     */
+    public function getMappedDevice($variationId,$categoryId)
+    {
+        $withString = "itemImages,images,item,variationAttributeValues,properties";
+        $with = array_flip(explode(',', $withString));
+
+        /** @var VariationRepositoryContract $variationRepository */
+        $variationRepository = pluginApp(VariationRepositoryContract::class);
+        $variation = $variationRepository->show($variationId, $with, 'de');
+        /** @var PaginatedResult $result */
+        $result = $this->variationController->search()->toArray();
+
+        if(is_null($variation)){
+            throw new Exception('Fehler beim Auslesen der Artikel', 400);
+        }
+
+        /** @var SystemInformationRepositoryContract $systemInformation */
+        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
+        $actual_link = $systemInformation->loadValue("baseUrlSsl");
+
+        $device = $this->getDevice($variation["id"]);
+        $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
+
+        $categoryInfo = $this->categoryRepo->get($categoryId);
+        if(!is_null($categoryInfo) && !empty($categoryInfo->details[0]->imagePath)) {
+            $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details[0]->imagePath);
+        }
+        else{
+            $imageSettings = $this->itemImageSettingsRepo->get();
+            $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
+        }
+
+        $rentalDevice = pluginApp(RentalDevice::class);
+        $rentalDevice->id = $variation["id"];
+        $rentalDevice->name = $variation["name"];
+        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
+        $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
+        $rentalDevice->attributes = $variation["variationAttributeValues"];
+        $rentalDevice->properties = $variation["properties"];
+        $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
+        $rentalDevice->created_at = $variation["created_at"];
+        $rentalDevice->rent_until = $device["rent_until"];
+        return $rentalDevice;
+    }
+
+    /**
      * Create an item
      *
      * @param Request $request
@@ -548,7 +600,7 @@ class EquipmentRentalService
         $name = $request->get("name","Testitem");
         $categoryId = $request->get("categoryId",23);
         $image = $request->get("image","");
-        $properties = $request->get("properties",[]);
+        $attributes = $request->get("properties",[]);
 
         $data = [
             'variations' => []
@@ -589,9 +641,6 @@ class EquipmentRentalService
             ]);
         }
 
-        $attributes = [
-            ['id' => 1,'name' => 'Testttttt']
-        ];
         if(!empty($attributes))
         {
             $propertyRelationIds = [];
@@ -624,7 +673,7 @@ class EquipmentRentalService
             $variationRepository->update(['PropertyRelation' => $propertyRelationIds],$createItem['variations'][0]['id']);
         }
 
-        return $createItem;
+        return $this->getMappedDevice($createItem['variations'][0]['id'],$categoryId);
     }
 
     /**

@@ -552,13 +552,9 @@ class EquipmentRentalService
         /** @var VariationRepositoryContract $variationRepository */
         $variationRepository = pluginApp(VariationRepositoryContract::class);
         $variation = $variationRepository->show($variationId, $with, 'de');
-        /** @var PaginatedResult $result */
-        $result = $this->variationController->search()->toArray();
-
         if(is_null($variation)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
-
         /** @var SystemInformationRepositoryContract $systemInformation */
         $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
         $actual_link = $systemInformation->loadValue("baseUrlSsl");

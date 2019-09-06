@@ -5,18 +5,13 @@ use Exception;
 use EquipmentRental\Contracts\RentalItemRepositoryContract;
 use EquipmentRental\Models\RentalHistory;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Plenty\Configuration\Contracts\Configuration;
 use Plenty\Exceptions\ValidationException;
-use Plenty\Legacy\Repositories\Item\ItemImage\ItemImageRepository;
 use Plenty\Modules\Account\Contact\Models\Contact;
-use Plenty\Modules\Item\Attribute\Contracts\AttributeRepositoryContract;
 use Plenty\Modules\Item\Item\Contracts\ItemRepositoryContract;
 use Plenty\Modules\Item\ItemImage\Contracts\ItemImageRepositoryContract;
+use Plenty\Modules\Item\Property\Contracts\PropertyNameRepositoryContract;
 use Plenty\Modules\Item\Variation\Models\Variation;
 use Plenty\Modules\Item\VariationImage\Contracts\VariationImageRepositoryContract;
-use Plenty\Modules\Plugin\Contracts\ConfigurationRepositoryContract;
-use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 use EquipmentRental\Models\RentalItem;
 use EquipmentRental\Models\RentalUser;
 use EquipmentRental\Validators\RentalItemValidator;
@@ -25,6 +20,10 @@ use EquipmentRental\Validators\RentalMailValidator;
 use Plenty\Modules\Account\Contact\Contracts\ContactRepositoryContract;
 use Plenty\Modules\Account\Contact\Models\ContactType;
 use Plenty\Modules\Account\Contact\Models\ContactOption;
+use Plenty\Modules\Item\VariationProperty\Contracts\VariationPropertyValueTextRepositoryContract;
+use Plenty\Modules\Property\Contracts\PropertyRelationRepositoryContract;
+use Plenty\Modules\Property\Contracts\PropertyRelationValueRepositoryContract;
+use Plenty\Modules\Property\Contracts\PropertyRepositoryContract;
 use Plenty\Modules\System\Contracts\SystemInformationRepositoryContract;
 use Plenty\Modules\User\Contracts\UserRepositoryContract;
 use Plenty\Plugin\Http\Request;
@@ -549,6 +548,7 @@ class EquipmentRentalService
         $name = $request->get("name","Testitem");
         $categoryId = $request->get("categoryId",23);
         $image = $request->get("image","");
+        $properties = $request->get("properties",[]);
 
         $data = [
             'variations' => []
@@ -561,7 +561,7 @@ class EquipmentRentalService
         ];
         $item->unit = ["unitId" => 1, "content" => 1];
 
-        array_push($data['variations'], $item->toArray());
+        $data['variations'][] = $item->toArray();
         try {
             $createItem = $this->itemRepository->add($data);
         } catch (Exception $e) {
@@ -589,33 +589,39 @@ class EquipmentRentalService
             ]);
         }
 
+        $attributes = [
+            ['id' => 1,'name' => 'Testttttt']
+        ];
         if(!empty($attributes))
         {
-            $attributes = [
-                ['name' => 'Test']
-            ];
-            $variationAttributeValues = [];
+            $propertyRelationIds = [];
             foreach ($attributes as $attribute)
             {
-                /** @var AttributeRepositoryContract $variationRepo */
-                $variationRepo = pluginApp(AttributeRepositoryContract::class); //Create or update variation
-                $attributeExist = true;
-                try {
-                    $variationRepo->findById($attribute['id']);
-                } catch (Exception $e) {
-                    $attributeExist = false;
-                }
-                if(!$attributeExist){
-                    $newAttribute = $variationRepo->create(['backendName' => $attribute['name']]);
-                    $newAttribute->id = $attribute['id'];
-                }
-                array_push($variationAttributeValues,['valueId' => $attribute['id']]);
-            }
+                /** @var PropertyRelationRepositoryContract $propertyRelationValue */
+                $propertyRelation = pluginApp(PropertyRelationRepositoryContract::class);
+                $newPropertyRelation = $propertyRelation->createRelation([
+                    'relationTargetId' => $createItem['variations'][0]['id'],
+                    'relationTypeIdentifier' =>'item',
+                    'propertyId' => $attribute['id']
+                ]);
 
+                /** @var PropertyRelationValueRepositoryContract $propertyRelationValue */
+                $propertyRelationValue = pluginApp(PropertyRelationValueRepositoryContract::class);
+                $propertyData = [
+                    'propertyRelationId' => $newPropertyRelation->id,
+                    'lang' => 'de',
+                    'value' => $attribute['name']
+                ];
+                try {
+                    $propertyValue = $propertyRelationValue->createPropertyRelationValue($propertyData);
+                    $propertyRelationIds[] = $propertyValue->propertyRelationId;
+                } catch (Exception $e) {
+
+                }
+            }
             /** @var VariationRepositoryContract $variationRepository */
             $variationRepository = pluginApp(VariationRepositoryContract::class);
-            $variationRepository->update(['variationAttributeValues' => $variationAttributeValues],$createItem['variations'][0]['id']);
-            //$variationAttributeValues = [];
+            $variationRepository->update(['PropertyRelation' => $propertyRelationIds],$createItem['variations'][0]['id']);
         }
 
         return $createItem;

@@ -63,6 +63,9 @@ class EquipmentRentalService
     /** @var ItemRepositoryContract */
     private $itemRepository;
 
+    /** @var $language */
+    private $language;
+
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
         ContactRepositoryContract $contactRepo,
         UserRepositoryContract $userRepository,
@@ -551,7 +554,7 @@ class EquipmentRentalService
 
         /** @var VariationRepositoryContract $variationRepository */
         $variationRepository = pluginApp(VariationRepositoryContract::class);
-        $variation = $variationRepository->show($variationId, $with, 'de');
+        $variation = $variationRepository->show($variationId, $with, $this->getLanguage());
         if(is_null($variation)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
@@ -604,6 +607,7 @@ class EquipmentRentalService
         /** @var Variation $item */
         $item = pluginApp(Variation::class);
         $item->name = $name;
+        $item->isMain = true;
         $item->variationCategories = [
             ["categoryId" => $categoryId]
         ];
@@ -654,7 +658,7 @@ class EquipmentRentalService
                 $propertyRelationValue = pluginApp(PropertyRelationValueRepositoryContract::class);
                 $propertyData = [
                     'propertyRelationId' => $newPropertyRelation->id,
-                    'lang' => 'de',
+                    'lang' => $this->getLanguage(),
                     'value' => $attribute['name']
                 ];
                 try {
@@ -681,5 +685,18 @@ class EquipmentRentalService
     function is_base64($str)
     {
         return preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $str);
+    }
+
+    /**
+     * Get Language
+     *
+     * @return string
+     */
+    private function getLanguage()
+    {
+        if ($this->language === null) {
+            $this->language =  \Locale::getDefault();
+        }
+        return $this->language;
     }
 }

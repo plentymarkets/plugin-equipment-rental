@@ -294,7 +294,7 @@ class EquipmentRentalService
             $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
 
             $categoryInfo = $this->categoryRepo->get($request->get("categoryId",''));
-            if(!is_null($categoryInfo) && !empty($categoryInfo->details[0]->imagePath)) {
+            if(!is_null($categoryInfo) && !empty($categoryInfo->details) &&!empty($categoryInfo->details[0]->imagePath)) {
                 $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details[0]->imagePath);
             }
             else{

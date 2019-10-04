@@ -292,20 +292,10 @@ class EquipmentRentalService
         {
             $device = $this->getDevice($variation["id"]);
             $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
-
-            $categoryInfo = $this->categoryRepo->get($request->get("categoryId",''));
-            if(!is_null($categoryInfo) && !empty($categoryInfo->details) && !empty($categoryInfo->details->first()->imagePath)) {
-                $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details->first()->imagePath);
-            }
-            else{
-                $imageSettings = $this->itemImageSettingsRepo->get();
-                $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
-            }
-
             $rentalDevice = pluginApp(RentalDevice::class);
             $rentalDevice->id = $variation["id"];
             $rentalDevice->name = is_null($variation["name"]) ? $variation["itemTexts"]->first()->name : $variation["name"];
-            $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
+            $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($request->get("categoryId",''));
             $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
             $rentalDevice->attributes = $variation["variationAttributeValues"];
             $rentalDevice->properties = $variation["properties"];
@@ -334,29 +324,12 @@ class EquipmentRentalService
         if(is_null($variation)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
-
-        /** @var SystemInformationRepositoryContract $systemInformation */
-        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
-        $actual_link = $systemInformation->loadValue("baseUrlSsl");
-
-        $variations=[];
-
         $device = $this->getDevice($variation["id"]);
         $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
-
-        $categoryInfo = $this->categoryRepo->get($request->get("categoryId",''));
-        if(!is_null($categoryInfo) && !empty($categoryInfo->details->first()->imagePath)) {
-            $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details->first()->imagePath);
-        }
-        else{
-            $imageSettings = $this->itemImageSettingsRepo->get();
-            $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
-        }
-
         $rentalDevice = pluginApp(RentalDevice::class);
         $rentalDevice->id = $variation["id"];
         $rentalDevice->name = $variation["name"];
-        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
+        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($request->get("categoryId",''));
         $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
         $rentalDevice->attributes = $variation["variationAttributeValues"];
         $rentalDevice->properties = $variation["properties"];
@@ -562,26 +535,14 @@ class EquipmentRentalService
         if(is_null($variation)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
-        /** @var SystemInformationRepositoryContract $systemInformation */
-        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
-        $actual_link = $systemInformation->loadValue("baseUrlSsl");
 
         $device = $this->getDevice($variation["id"]);
         $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
 
-        $categoryInfo = $this->categoryRepo->get($categoryId);
-        if(!is_null($categoryInfo) && !empty($categoryInfo->details->first()->imagePath)) {
-            $defaultImage = sprintf("%s/documents/%s",$actual_link,$categoryInfo->details->first()->imagePath);
-        }
-        else{
-            $imageSettings = $this->itemImageSettingsRepo->get();
-            $defaultImage = $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
-        }
-
         $rentalDevice = pluginApp(RentalDevice::class);
         $rentalDevice->id = $variation["id"];
         $rentalDevice->name = $variation["name"];
-        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
+        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($categoryId);
         $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
         $rentalDevice->attributes = $variation["variationAttributeValues"];
         $rentalDevice->properties = $variation["properties"];
@@ -589,6 +550,18 @@ class EquipmentRentalService
         $rentalDevice->created_at = $variation["created_at"];
         $rentalDevice->rent_until = $device["rent_until"];
         return $rentalDevice;
+    }
+    
+    private function getDefaultImage($categoryId){
+        /** @var SystemInformationRepositoryContract $systemInformation */
+        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
+        $actual_link = $systemInformation->loadValue("baseUrlSsl");
+        $categoryInfo = $this->categoryRepo->get($categoryId);
+        if(!is_null($categoryInfo) && !empty($categoryInfo->details->first()->imagePath)) {
+            return sprintf("%s/documents/%s",$actual_link,$categoryInfo->details->first()->imagePath);
+        }
+        $imageSettings = $this->itemImageSettingsRepo->get();
+        return $actual_link.$imageSettings->placeholder["imagePlaceholderURL"];
     }
 
     /**

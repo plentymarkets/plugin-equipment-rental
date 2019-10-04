@@ -271,7 +271,7 @@ class EquipmentRentalService
      */
     public function getDevices(Request $request)
     {
-        $withString = "itemImages,images,item,variationAttributeValues,properties";
+        $withString = "itemImages,images,item,variationAttributeValues,properties,itemTexts";
         $with = array_flip(explode(',', $withString));
         $this->variationController->setSearchParams(['with' => $with]);
         $this->variationController->setSearchFilter("variationCategory.hasCategory",["categoryId" => $request->get("categoryId",'')]);
@@ -304,7 +304,7 @@ class EquipmentRentalService
 
             $rentalDevice = pluginApp(RentalDevice::class);
             $rentalDevice->id = $variation["id"];
-            $rentalDevice->name = empty($variation["name"]) ? $variation["name1"] : $variation["name"];
+            $rentalDevice->name = is_null($variation["name"]) ? $variation["itemTexts"]->first()->name : $variation["name"];
             $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
             $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
             $rentalDevice->attributes = $variation["variationAttributeValues"];

@@ -304,7 +304,7 @@ class EquipmentRentalService
 
             $rentalDevice = pluginApp(RentalDevice::class);
             $rentalDevice->id = $variation["id"];
-            $rentalDevice->name = $variation["name"];
+            $rentalDevice->name = empty($variation["name"]) ? $variation["name1"] : $variation["name"];
             $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $defaultImage;
             $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
             $rentalDevice->attributes = $variation["variationAttributeValues"];
@@ -440,12 +440,16 @@ class EquipmentRentalService
 
         $variationRepository = pluginApp(VariationRepositoryContract::class);
         /** @var Variation $result */
-        $result = $variationRepository->show($id,[],"de");
+        $result = $variationRepository->show($id,[],$this->language);
         if(!is_null($result))
         {
             $result = (array) $result;
-            if(!empty($result["name"]))
+            if(!empty($result["name"])){
                 $name = $result["name"];
+            }
+            elseif(!empty($result["name1"])){
+                $name = $result["name1"];
+            }
         }
 
         return $name;

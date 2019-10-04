@@ -24,7 +24,7 @@ class EquipmentRentalRouteServiceProvider extends RouteServiceProvider
         $router->get('plugin/equipmentRental/rentalDevice/setting','EquipmentRental\Controllers\ContentController@getSetting');
         $router->get('plugin/equipmentRental/rentalDevice/settings','EquipmentRental\Controllers\ContentController@getSettings');
 
-        $router->get('plugin/equipmentRental/rentalDevice/findUser/{name}','EquipmentRental\Controllers\ContentController@findUser')->where('name','[A-Za-z]+');
+        $router->get('plugin/equipmentRental/rentalDevice/findUser/{name}','EquipmentRental\Controllers\ContentController@findUser');
 
         $router->post('plugin/equipmentRental/createItem','EquipmentRental\Controllers\ContentController@createItem');
 

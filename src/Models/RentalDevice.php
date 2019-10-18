@@ -14,8 +14,9 @@ use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
  * @property string $image
  * @property mixed $attributes
  * @property mixed $properties
+ * @property int $rent_until
  * @property string $created_at
- * @property mixed $user
+ * @property mixed $status
  */
 class RentalDevice extends Model
 {
@@ -31,6 +32,7 @@ class RentalDevice extends Model
     public $created_at      = '';
     public $user;
     public $rent_until      = 0;
+    public $status          = '';
 
     /**
      * @return string

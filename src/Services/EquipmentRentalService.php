@@ -302,6 +302,7 @@ class EquipmentRentalService
             $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
             $rentalDevice->created_at = $variation["created_at"];
             $rentalDevice->rent_until = $device["rent_until"];
+            $rentalDevice->status = $device['status'];
             array_push($variations,$rentalDevice);
         }
         return $variations;

@@ -592,8 +592,12 @@ class EquipmentRentalService
         $item = $item->toArray();
 
         $data['variations'][] = $item;
-        $data['texts'] = [];
-        $data['texts']['name1'] = $name;
+        $data['texts'] = [
+            [
+                'name1' => $name,
+                'lang' => $this->getLanguage()
+            ]
+        ];
         try {
             $createItem = $this->itemRepository->add($data);
         } catch (Exception $e) {

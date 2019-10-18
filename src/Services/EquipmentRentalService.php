@@ -589,8 +589,11 @@ class EquipmentRentalService
             ["categoryId" => $categoryId]
         ];
         $item->unit = ["unitId" => 1, "content" => 1];
+        $item = $item->toArray();
 
-        $data['variations'][] = $item->toArray();
+        $data['variations'][] = $item;
+        $data['texts'] = [];
+        $data['texts']['name1'] = $name;
         try {
             $createItem = $this->itemRepository->add($data);
         } catch (Exception $e) {

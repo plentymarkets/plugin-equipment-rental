@@ -1,6 +1,6 @@
 <?php
 
-namespace EquipmentRental\Validators;
+namespace Verleihliste\Validators;
 
 use Plenty\Validation\Validator;
 

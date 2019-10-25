@@ -1,8 +1,8 @@
 <?php
 
-namespace EquipmentRental\Migrations;
+namespace Verleihliste\Migrations;
 
-use EquipmentRental\Models\RentalSetting;
+use Verleihliste\Models\RentalSetting;
 use Plenty\Modules\Plugin\DataBase\Contracts\Migrate;
 
 /**

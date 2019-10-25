@@ -1,11 +1,11 @@
 <?php
 
-namespace EquipmentRental\Providers;
+namespace Verleihliste\Providers;
 
 
 use Plenty\Plugin\ServiceProvider;
-use EquipmentRental\Contracts\RentalItemRepositoryContract;
-use EquipmentRental\Repositories\RentalItemRepository;
+use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Repositories\RentalItemRepository;
 
 class EquipmentRentalServiceProvider extends ServiceProvider
 {

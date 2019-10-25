@@ -1,12 +1,12 @@
 <?php
 
-namespace EquipmentRental\Repositories;
+namespace Verleihliste\Repositories;
 
 use Plenty\Exceptions\ValidationException;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
-use EquipmentRental\Contracts\RentalItemRepositoryContract;
-use EquipmentRental\Models\RentalItem;
-use EquipmentRental\Validators\RentalItemValidator;
+use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Models\RentalItem;
+use Verleihliste\Validators\RentalItemValidator;
 
 
 class RentalItemRepository implements RentalItemRepositoryContract

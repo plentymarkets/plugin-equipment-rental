@@ -1,6 +1,6 @@
 <?php
 
-namespace EquipmentRental\Models;
+namespace Verleihliste\Models;
 
 use Plenty\Modules\Plugin\DataBase\Contracts\Model;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
@@ -22,7 +22,7 @@ class RentalSetting extends Model
      */
     public function getTableName(): string
     {
-        return 'EquipmentRental::RentalSetting';
+        return 'Verleihliste::RentalSetting';
     }
 
     public function save()

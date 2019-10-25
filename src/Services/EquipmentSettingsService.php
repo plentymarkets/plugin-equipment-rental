@@ -1,7 +1,7 @@
 <?php
-namespace EquipmentRental\Services;
+namespace Verleihliste\Services;
 
-use EquipmentRental\Models\RentalSetting;
+use Verleihliste\Models\RentalSetting;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 
 class EquipmentSettingsService

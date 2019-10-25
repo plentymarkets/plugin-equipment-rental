@@ -1,12 +1,12 @@
 <?php
 
-namespace EquipmentRental\Contracts;
+namespace Verleihliste\Contracts;
 
-use EquipmentRental\Models\RentalItem;
+use Verleihliste\Models\RentalItem;
 
 /**
  * Class RentalItemRepositoryContract
- * @package EquipmentRental\Contracts
+ * @package Verleihliste\Contracts
  */
 interface RentalItemRepositoryContract
 {

@@ -1,6 +1,6 @@
 {
-      "name"              : "EquipmentRental",
-      "namespace"         : "EquipmentRental",
+      "name"              : "Verleihliste",
+      "namespace"         : "Verleihliste",
       "type"              : "backend",
       "version"           : "1.0.0",
       "isClosedSource"    : "Determines if your plugin is closed source or open source",
@@ -8,8 +8,7 @@
       "description"       : "My first Plugin",
       "author"            : "Kevin Fink",
       "authorIcon"        : "The author icon",
-      "email"             : "test@test.de",
-      "phone"             : "+49156564564654",
-      "serviceProvider"   :"EquipmentRental\\Providers\\EquipmentRentalServiceProvider",
-      "runOnBuild":["EquipmentRental\\Migrations\\CreateRentalItemTable","EquipmentRental\\Migrations\\CreateRentalSettingsTable"]
+      "email"             : "kevin.fink@test.de",
+      "serviceProvider"   :"Verleihliste\\Providers\\EquipmentRentalServiceProvider",
+      "runOnBuild":["Verleihliste\\Migrations\\CreateRentalItemTable","Verleihliste\\Migrations\\CreateRentalSettingsTable"]
 }

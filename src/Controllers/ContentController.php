@@ -1,13 +1,13 @@
 <?php
 
-namespace EquipmentRental\Controllers;
+namespace Verleihliste\Controllers;
 
 
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
-use EquipmentRental\Contracts\RentalItemRepositoryContract;
-use EquipmentRental\Services\EquipmentRentalService;
-use EquipmentRental\Services\EquipmentSettingsService;
+use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Services\EquipmentRentalService;
+use Verleihliste\Services\EquipmentSettingsService;
 use Exception;
 
 class ContentController extends Controller

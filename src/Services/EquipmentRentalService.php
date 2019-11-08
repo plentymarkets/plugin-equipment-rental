@@ -570,8 +570,8 @@ class EquipmentRentalService
      */
     public function createItem(Request $request)
     {
-        $name = $request->get("name","Testitem");
-        $categoryId = $request->get("categoryId",23);
+        $name = $request->get("name","");
+        $categoryId = $request->get("categoryId");
         $image = $request->get("image","");
         $attributes = $request->get("properties",[]);
 
@@ -585,6 +585,7 @@ class EquipmentRentalService
         $item->variationCategories = [
             ["categoryId" => $categoryId]
         ];
+        $item->stockLimitation = 2; //no stock for this variation
         $item->unit = ["unitId" => 1, "content" => 1];
         $item = $item->toArray();
 

@@ -34,6 +34,7 @@ class RentalItem extends Model
     public $rent_until      = 0;
     public $created_at      = 0;
     public $status          = 0;
+    public $getBackDate     = 0;
 
     /**
      * @return string

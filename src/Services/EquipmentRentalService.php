@@ -279,26 +279,10 @@ class EquipmentRentalService
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
 
-        /** @var SystemInformationRepositoryContract $systemInformation */
-        $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
-        $actual_link = $systemInformation->loadValue("baseUrlSsl");
-
         $variations=[];
         foreach($result["entries"] as $variation)
         {
-            $device = $this->getDevice($variation["id"]);
-            $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
-            $rentalDevice = pluginApp(RentalDevice::class);
-            $rentalDevice->id = $variation["id"];
-            $rentalDevice->name = is_null($variation["name"]) ? $variation["itemTexts"]->first()->name : $variation["name"];
-            $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($request->get("categoryId",''));
-            $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
-            $rentalDevice->attributes = $variation["variationAttributeValues"];
-            $rentalDevice->properties = $variation["properties"];
-            $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
-            $rentalDevice->created_at = $variation["created_at"];
-            $rentalDevice->rent_until = $device["rent_until"];
-            $rentalDevice->status = $device['status'];
+            $rentalDevice = $this->mapDeviceData((array)$variation,$request->get("categoryId",''));
             array_push($variations,$rentalDevice);
         }
         return $variations;
@@ -308,7 +292,7 @@ class EquipmentRentalService
      * Get article with device informations
      *
      * @param Request $request
-     * @return array
+     * @return RentalDevice
      * @throws /Exception
      */
     public function getDeviceById(Request $request)
@@ -321,19 +305,7 @@ class EquipmentRentalService
         if(is_null($variation)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
-        $device = $this->getDevice($variation["id"]);
-        $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
-        $rentalDevice = pluginApp(RentalDevice::class);
-        $rentalDevice->id = $variation["id"];
-        $rentalDevice->name = $variation["name"];
-        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($request->get("categoryId",''));
-        $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
-        $rentalDevice->attributes = $variation["variationAttributeValues"];
-        $rentalDevice->properties = $variation["properties"];
-        $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
-        $rentalDevice->created_at = $variation["created_at"];
-        $rentalDevice->rent_until = $device["rent_until"];
-        return $rentalDevice;
+        return $this->mapDeviceData((array)$variation,$request->get("categoryId",''));
     }
 
     /**
@@ -533,20 +505,7 @@ class EquipmentRentalService
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
 
-        $device = $this->getDevice($variation["id"]);
-        $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
-
-        $rentalDevice = pluginApp(RentalDevice::class);
-        $rentalDevice->id = $variation["id"];
-        $rentalDevice->name = $variation["name"];
-        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($categoryId);
-        $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
-        $rentalDevice->attributes = $variation["variationAttributeValues"];
-        $rentalDevice->properties = $variation["properties"];
-        $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
-        $rentalDevice->created_at = $variation["created_at"];
-        $rentalDevice->rent_until = $device["rent_until"];
-        return $rentalDevice;
+        return $this->getMappedDevice($variation,$categoryId);
     }
     
     private function getDefaultImage($categoryId){
@@ -680,5 +639,30 @@ class EquipmentRentalService
             $this->language =  \Locale::getDefault();
         }
         return $this->language;
+    }
+
+    /**
+     * Get the device per Variation
+     *
+     * @param  array  $variation
+     * @param int $categoryId
+     * @return RentalDevice
+     */
+    private function mapDeviceData(array $variation,int $categoryId) : RentalDevice
+    {
+        $device = $this->getDevice($variation["id"]);
+        $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
+        $rentalDevice = pluginApp(RentalDevice::class);
+        $rentalDevice->id = $variation["id"];
+        $rentalDevice->name = $variation["name"];
+        $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($categoryId);
+        $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;
+        $rentalDevice->attributes = $variation["variationAttributeValues"];
+        $rentalDevice->properties = $variation["properties"];
+        $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
+        $rentalDevice->created_at = $variation["created_at"];
+        $rentalDevice->rent_until = $device["rent_until"];
+        $rentalDevice->status = $device['status'] ?? 0;
+        return $rentalDevice;
     }
 }

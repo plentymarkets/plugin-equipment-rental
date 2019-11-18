@@ -24,6 +24,7 @@ class RentalDevice extends Model
      * @var int
      */
     public $id              = 0;
+    public $itemId          = 0;
     public $name            = '';
     public $isAvailable     = 0;
     public $image           = '';

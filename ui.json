@@ -4,20 +4,20 @@
   "menuEntries": [
     {
       "label": "Einstellungen",
-      "menu": "settings/plenty-app/Verleihliste",
-      "urlKey": "settings",
+      "menu": "settings/plenty-app/EquipmentRental",
+      "urlKey": "equipmentRental",
       "entryPoint": "index.html#/plugin/settings"
     },
     {
       "label": "Geräteübersicht",
-      "menu": "settings/plenty-app/Verleihliste",
-      "urlKey": "overview",
+      "menu": "item",
+      "urlKey": "equipmentRental",
       "entryPoint": "index.html#/plugin/overview"
     },
     {
       "label": "Verleihübersicht",
-      "menu": "settings/plenty-app/Verleihliste",
-      "urlKey": "manage",
+      "menu": "item",
+      "urlKey": "equipmentRental",
       "entryPoint": "index.html#/plugin/manage"
     }
   ]

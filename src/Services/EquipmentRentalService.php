@@ -274,7 +274,6 @@ class EquipmentRentalService
 
         /** @var PaginatedResult $result */
         $result = $this->variationController->search()->toArray();
-
         if(is_null($result)){
             throw new Exception('Fehler beim Auslesen der Artikel', 400);
         }
@@ -654,6 +653,7 @@ class EquipmentRentalService
         $user = !is_null($device) && !$device["isAvailable"] ? $this->getUserDataById($device["userId"]) : "";
         $rentalDevice = pluginApp(RentalDevice::class);
         $rentalDevice->id = $variation["id"];
+        $rentalDevice->itemId = $variation["itemId"];
         $rentalDevice->name = $variation["name"];
         $rentalDevice->image = !empty($variation["itemImages"]) ? $variation["itemImages"][0]["url"]: $this->getDefaultImage($categoryId);
         $rentalDevice->isAvailable = !is_null($device) ? $device["isAvailable"] : 1;

@@ -12,65 +12,64 @@ use Verleihliste\Validators\RentalItemValidator;
 class RentalItemRepository implements RentalItemRepositoryContract
 {
     /**
+     * @var DataBase
+     */
+    private $database;
+
+    public function __construct(DataBase $database)
+    {
+        $this->database = $database;
+    }
+
+    /**
      * List all devices
      *
      * @return RentalItem[]
      */
     public function getDevices(): array
     {
-        $database = pluginApp(DataBase::class);
-
-        /**
-         * @var RentalItem[] $rentalItem
-         */
-        $rentalItem = $database->query(RentalItem::class)->get();
-        return $rentalItem;
+        return $this->database->query(RentalItem::class)->get();
     }
 
     /**
      * Get a single device by deviceId
      *
      * @param int $deviceId
-     * @return Mixed
+     * @return RentalItem|null
      */
     public function getDevice($deviceId)
     {
-        $database = pluginApp(DataBase::class);
         /**
          * @var RentalItem $rentalItem
          */
-        $rentalItem = $database->query(RentalItem::class)
+        $rentalItem = $this->database->query(RentalItem::class)
             ->where('deviceId','=',$deviceId)
-            ->limit(1)
             ->orderBy('id','DESC')
+            ->limit(1)
             ->get();
 
-
-        return count($rentalItem) != 0 ? $rentalItem[0] : null;
+        return count($rentalItem) ? $rentalItem[0] : null;
     }
 
     /**
      * Get a rented device per deviceId
      *
      * @param int $deviceId
-     * @return Mixed
+     * @return RentalItem|null
      */
     public function getRentedDevice($deviceId)
     {
-        $database = pluginApp(DataBase::class);
-
         /**
          * @var RentalItem $rentalItem
          */
-        $rentalItem = $database->query(RentalItem::class)
+        $rentalItem = $this->database->query(RentalItem::class)
             ->where('deviceId','=',$deviceId)
             ->where('isAvailable', '=', 0)
-            ->limit(1)
             ->orderBy('id','DESC')
+            ->limit(1)
             ->get();
 
-
-        return count($rentalItem) != 0 ? $rentalItem[0] : null;
+        return count($rentalItem) ? $rentalItem[0] : null;
     }
 
 
@@ -98,20 +97,19 @@ class RentalItemRepository implements RentalItemRepositoryContract
         $comment = !empty($data["comment"]) ? $data["comment"] : "";
         $status = !empty($data["status"]) && !empty($statusType[$data["status"]]) ? $data["status"] : 0;
 
-        $rentalItem = $database->query(RentalItem::class)
+        $rentItem = $database->query(RentalItem::class)
             ->where('deviceId', '=', $id)
             ->where('isAvailable', '=', 0)
             ->limit(1)
             ->get();
-        if(count($rentalItem) == 0)
+
+        if(!count($rentItem))
         {
             return;
         }
-
-        $rentItem = $rentalItem[0];
-
+        $rentItem = $rentItem[0];
         $rentItem->isAvailable = 1;
-        $rentItem->rent_until = time();
+        $rentItem->getBackDate = time();
         $rentItem->getBackComment = $comment;
         $rentItem->status = $status;
         $rentItem->save();

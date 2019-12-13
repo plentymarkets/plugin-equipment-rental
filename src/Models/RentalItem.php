@@ -16,6 +16,7 @@ use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
  * @property string $getBackComment
  * @property int $isAvailable
  * @property int $rent_until
+ * @property int $getBackDate
  * @property int     $created_at
  * @property int     $status
  */

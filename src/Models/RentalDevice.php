@@ -15,6 +15,7 @@ use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
  * @property mixed $attributes
  * @property mixed $properties
  * @property int $rent_until
+ * @property int $getBackDate
  * @property string $created_at
  * @property mixed $status
  */
@@ -34,6 +35,7 @@ class RentalDevice extends Model
     public $user;
     public $rent_until      = 0;
     public $status          = '';
+    public $getBackDate      = 0;
 
     /**
      * @return string

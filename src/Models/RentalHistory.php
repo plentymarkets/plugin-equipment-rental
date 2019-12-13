@@ -18,6 +18,7 @@ use Plenty\Modules\Plugin\DataBase\Contracts\Model;
  * @property int     $created_at
  * @property int     $status
  * @property string $name
+ * @property int $getBackDate
  */
 class RentalHistory extends Model
 {
@@ -35,6 +36,7 @@ class RentalHistory extends Model
     public $created_at      = 0;
     public $status          = 0;
     public $name            = '';
+    public $getBackDate      = 0;
 
     /**
      * @return string

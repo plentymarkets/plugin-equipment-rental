@@ -330,6 +330,7 @@ class EquipmentRentalService
             $historyDevice->rent_until = $device->rent_until;
             $historyDevice->created_at = $device->created_at;
             $historyDevice->status = $device->status;
+            $historyDevice->getBackDate = $device->getBackDate;
 
             array_push($history,$historyDevice);
         }
@@ -360,6 +361,7 @@ class EquipmentRentalService
             $rentedDevice->rent_until = $device->rent_until;
             $rentedDevice->created_at = $device->created_at;
             $rentedDevice->status = $device->status;
+            $rentedDevice->getBackDate = $device->getBackDate;
 
             if($rentedDevice->rent_until == 0)
                 array_push($rentedUndefinedTime,$rentedDevice);
@@ -662,6 +664,7 @@ class EquipmentRentalService
         $rentalDevice->user = !empty($user) ? sprintf("%s %s",ucfirst($user->firstname),ucfirst($user->lastname)) : "";
         $rentalDevice->created_at = $variation["created_at"];
         $rentalDevice->rent_until = $device["rent_until"];
+        $rentalDevice->getBackDate = $device["getBackDate"];
         $rentalDevice->status = $device['status'] ?? 0;
         return $rentalDevice;
     }

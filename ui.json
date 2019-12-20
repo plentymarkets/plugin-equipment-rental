@@ -11,13 +11,13 @@
     {
       "label": "Geräteübersicht",
       "menu": "item",
-      "urlKey": "equipmentRental",
+      "urlKey": "equipmentRental-overview",
       "entryPoint": "index.html#/plugin/overview"
     },
     {
       "label": "Verleihübersicht",
       "menu": "item",
-      "urlKey": "equipmentRental",
+      "urlKey": "equipmentRental-manage",
       "entryPoint": "index.html#/plugin/manage"
     }
   ]

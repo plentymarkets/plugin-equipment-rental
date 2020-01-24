@@ -10,6 +10,7 @@ use Verleihliste\Models\RentalLog;
 
 class EquipmentRentalLogService
 {
+
     /** @var DataBase $database */
     private $database;
 
@@ -40,6 +41,7 @@ class EquipmentRentalLogService
         $log->userId = $userId;
         $log->message = $message;
         $log->rentalItem = $rentalItem;
+        $log->created_at = time();
         $log->save();
 
         return $log;

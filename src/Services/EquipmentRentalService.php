@@ -3,6 +3,7 @@ namespace Verleihliste\Services;
 
 use Exception;
 use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Helpers\LogHelper;
 use Verleihliste\Models\RentalHistory;
 use Illuminate\Database\Eloquent\Collection;
 use Plenty\Exceptions\ValidationException;
@@ -27,7 +28,6 @@ use Plenty\Plugin\Http\Request;
 use Plenty\Modules\Item\Variation\Contracts\VariationSearchRepositoryContract;
 use Plenty\Repositories\Models\PaginatedResult;
 use Verleihliste\Models\RentalDevice;
-use Plenty\Modules\Authorization\Services\AuthHelper;
 use Plenty\Modules\Category\Contracts\CategoryRepositoryContract;
 use Plenty\Modules\Item\ItemImage\Contracts\ItemImageSettingsRepositoryContract;
 use Plenty\Plugin\Mail\Contracts\MailerContract;
@@ -62,6 +62,9 @@ class EquipmentRentalService
     /** @var $language */
     private $language;
 
+    /** @var EquipmentRentalLogService $logService */
+    private $logService;
+
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
         ContactRepositoryContract $contactRepo,
         UserRepositoryContract $userRepository,
@@ -69,8 +72,8 @@ class EquipmentRentalService
         ItemImageSettingsRepositoryContract $itemImageSettingsRepo,
         CategoryRepositoryContract $categoryRepo,
         EquipmentSettingsService $settingsService,
-        ItemRepositoryContract $itemRepository
-
+        ItemRepositoryContract $itemRepository,
+        EquipmentRentalLogService $logService
     )
     {
         $this->rentalItemRepo = $rentalItemRepo;
@@ -81,6 +84,7 @@ class EquipmentRentalService
         $this->categoryRepo = $categoryRepo;
         $this->settingsService = $settingsService;
         $this->itemRepository = $itemRepository;
+        $this->logService = $logService;
     }
 
     /**
@@ -101,7 +105,7 @@ class EquipmentRentalService
         }
 
         try{
-            $adminUserid = $this->userRepository->getCurrentUser()->id;
+            $backendUserId = $this->userRepository->getCurrentUser()->id;
         }
         catch(\Exception $e)
         {
@@ -152,12 +156,14 @@ class EquipmentRentalService
         $rentalItem = pluginApp(RentalItem::class);
         $rentalItem->deviceId = $data['deviceId'];
         $rentalItem->userId = $contactId;
-        $rentalItem->adminUserId = $adminUserid;
+        $rentalItem->adminUserId = $backendUserId;
         $rentalItem->rent_until = $data['rent_until'];
         $rentalItem->created_at = time();
         $rentalItem->comment = !empty($data["comment"]) ? $data["comment"] : "";
         $rentalItem->isAvailable = 0;
         $rentalItem->save();
+
+        $this->logService->addLog($rentalItem->id,LogHelper::DEVICE_RENT_MESSAGE);
 
         return $rentalItem;
     }
@@ -448,6 +454,7 @@ class EquipmentRentalService
 
         $emailHtml = $this->replaceMailPlaceholders($emailTemplate,$user,$device);
         $mailer = pluginApp(MailerContract::class);
+        $this->logService->addLog($device->id,LogHelper::DEVICE_SENT_MAIL_MESSAGE);
         return $mailer->sendHtml($emailHtml,[
             $user->email
         ],$emailTemplateTopic);
@@ -501,7 +508,7 @@ class EquipmentRentalService
 
         return $this->getMappedDevice($variation,$categoryId);
     }
-    
+
     private function getDefaultImage($categoryId){
         /** @var SystemInformationRepositoryContract $systemInformation */
         $systemInformation = pluginApp(SystemInformationRepositoryContract::class);
@@ -607,7 +614,7 @@ class EquipmentRentalService
             $variationRepository = pluginApp(VariationRepositoryContract::class);
             $variationRepository->update(['PropertyRelation' => $propertyRelationIds],$createItem['variations'][0]['id']);
         }
-
+        $this->logService->addLog($createItem['variations'][0]['id'],LogHelper::DEVICE_CREATE_ITEM);
         return $this->getMappedDevice($createItem['variations'][0]['id'],$categoryId);
     }
 

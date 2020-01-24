@@ -5,20 +5,29 @@ namespace Verleihliste\Repositories;
 use Plenty\Exceptions\ValidationException;
 use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Helpers\LogHelper;
 use Verleihliste\Models\RentalItem;
+use Verleihliste\Services\EquipmentRentalLogService;
 use Verleihliste\Validators\RentalItemValidator;
 
 
 class RentalItemRepository implements RentalItemRepositoryContract
 {
     /**
-     * @var DataBase
+     * @var DataBase $database
      */
     private $database;
 
-    public function __construct(DataBase $database)
+    /** @var EquipmentRentalLogService $logService */
+    private $logService;
+
+    public function __construct(
+        DataBase $database,
+        EquipmentRentalLogService $logService
+    )
     {
         $this->database = $database;
+        $this->logService = $logService;
     }
 
     /**
@@ -76,9 +85,10 @@ class RentalItemRepository implements RentalItemRepositoryContract
     /**
      * Delete a device from the rental list
      *
-     * @param int $id
-     * @param array $data
+     * @param  int  $id
+     * @param  array  $data
      * @return RentalItem
+     * @throws \Exception
      */
     public function deleteDevice($id,array $data)
     {
@@ -113,6 +123,8 @@ class RentalItemRepository implements RentalItemRepositoryContract
         $rentItem->getBackComment = $comment;
         $rentItem->status = $status;
         $rentItem->save();
+
+        $this->logService->addLog($rentItem->deviceId,LogHelper::DEVICE_GIVE_BACK_MESSAGE);
 
         return $rentItem;
     }

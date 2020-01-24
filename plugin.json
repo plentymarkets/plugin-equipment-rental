@@ -10,5 +10,5 @@
       "authorIcon"        : "The author icon",
       "email"             : "kevin.fink@test.de",
       "serviceProvider"   :"Verleihliste\\Providers\\EquipmentRentalServiceProvider",
-      "runOnBuild":["Verleihliste\\Migrations\\CreateRentalItemTable","Verleihliste\\Migrations\\CreateRentalSettingsTable","Verleihliste\\Migrations\\UpdateRentalItemTable"]
+      "runOnBuild":["Verleihliste\\Migrations\\CreateRentalItemTable","Verleihliste\\Migrations\\CreateRentalSettingsTable","Verleihliste\\Migrations\\UpdateRentalItemTable","Verleihliste\\Migrations\\CreateRentalLogTable"]
 }

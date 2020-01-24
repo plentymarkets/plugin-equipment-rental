@@ -333,7 +333,7 @@ class EquipmentRentalService
     /**
      * Get infos to rented devices ordered by rent_until
      *
-     * @return Mixed
+     * @return array
      */
     public function getRentedDevices()
     {

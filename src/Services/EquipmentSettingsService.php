@@ -71,7 +71,6 @@ class EquipmentSettingsService
      */
     public function getSettings()
     {
-        $settings = $this->database->query(RentalSetting::class)->get();
-        return $settings;
+        return $this->database->query(RentalSetting::class)->get();
     }
 }

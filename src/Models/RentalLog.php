@@ -21,6 +21,7 @@ class RentalLog extends Model
      */
     public $id              = 0;
     public $userId          = 0;
+    /* @todo make rentalItem a foreign key if possible in plugin */
     public $rentalItem      = 0;
     public $message         = '';
     public $created_at      = 0;

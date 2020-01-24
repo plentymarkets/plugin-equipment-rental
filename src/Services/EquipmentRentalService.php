@@ -101,14 +101,7 @@ class EquipmentRentalService
         }
 
         try{
-            $authHelper = pluginApp(AuthHelper::class);
-            $userRepository = $this->userRepository;
-            $adminUserid = $authHelper->processUnguarded(
-                function () use ($userRepository) {
-                    $backendUser = $userRepository->getUserById(1);
-                    return $backendUser->id;
-                }
-            );
+            $adminUserid = $this->userRepository->getCurrentUser()->id;
         }
         catch(\Exception $e)
         {

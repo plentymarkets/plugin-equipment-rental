@@ -32,6 +32,7 @@ use Plenty\Modules\Category\Contracts\CategoryRepositoryContract;
 use Plenty\Modules\Item\ItemImage\Contracts\ItemImageSettingsRepositoryContract;
 use Plenty\Plugin\Mail\Contracts\MailerContract;
 use Plenty\Modules\Item\Variation\Contracts\VariationRepositoryContract;
+use Plenty\Modules\Plugin\DataBase\Contracts\DataBase;
 
 class EquipmentRentalService
 {
@@ -65,6 +66,9 @@ class EquipmentRentalService
     /** @var EquipmentRentalLogService $logService */
     private $logService;
 
+    /** @var DataBase $database */
+    private $database;
+
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
         ContactRepositoryContract $contactRepo,
         UserRepositoryContract $userRepository,
@@ -73,7 +77,8 @@ class EquipmentRentalService
         CategoryRepositoryContract $categoryRepo,
         EquipmentSettingsService $settingsService,
         ItemRepositoryContract $itemRepository,
-        EquipmentRentalLogService $logService
+        EquipmentRentalLogService $logService,
+        DataBase $database
     )
     {
         $this->rentalItemRepo = $rentalItemRepo;
@@ -85,6 +90,7 @@ class EquipmentRentalService
         $this->settingsService = $settingsService;
         $this->itemRepository = $itemRepository;
         $this->logService = $logService;
+        $this->database = $database;
     }
 
     /**
@@ -163,7 +169,7 @@ class EquipmentRentalService
         $rentalItem->isAvailable = 0;
         $rentalItem->save();
 
-        $this->logService->addLog($rentalItem->id,LogHelper::DEVICE_RENT_MESSAGE);
+        $this->logService->addLog($rentalItem->deviceId,LogHelper::DEVICE_RENT_MESSAGE);
 
         return $rentalItem;
     }
@@ -212,7 +218,7 @@ class EquipmentRentalService
      * @param int $userId
      * @return RentalUser
      */
-    private function getUserDataById($userId) : RentalUser
+    public function getUserDataById($userId) : RentalUser
     {
         /** @var Contact $user */
         try
@@ -376,7 +382,7 @@ class EquipmentRentalService
      * @param int $id
      * @return string
      */
-    private function getNameByVariationId($id)
+    public function getNameByVariationId($id)
     {
         $name = "NONAME";
 
@@ -470,6 +476,7 @@ class EquipmentRentalService
 
     public function findUser($name)
     {
+        /** @var Collection $findUsers */
         /** @var Collection $findUsers */
         $findUsers = $this->userRepository->findByName($name);
         $users = [];

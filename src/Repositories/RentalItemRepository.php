@@ -142,11 +142,10 @@ class RentalItemRepository implements RentalItemRepositoryContract
          */
         $database = pluginApp(DataBase::class);
 
-        $rentalItem = $database->query(RentalItem::class)
+        return $database->query(RentalItem::class)
             ->where('deviceId', '=', $id)
             ->orderBy('id','DESC')
             ->get();
-        return $rentalItem;
     }
 
     /**
@@ -160,10 +159,9 @@ class RentalItemRepository implements RentalItemRepositoryContract
          * @var DataBase $database
          */
         $database = pluginApp(DataBase::class);
-        $rentalItem = $database->query(RentalItem::class)
+        return $database->query(RentalItem::class)
             ->where('isAvailable', '=', 0)
             ->orderBy('rent_until')
             ->get();
-        return $rentalItem;
     }
 }

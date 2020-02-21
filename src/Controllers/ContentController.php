@@ -5,7 +5,11 @@ namespace Verleihliste\Controllers;
 
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
+use Plenty\Plugin\Http\Response;
 use Verleihliste\Contracts\RentalItemRepositoryContract;
+use Verleihliste\Models\RentalItem;
+use Verleihliste\Models\RentalLog;
+use Verleihliste\Services\EquipmentRentalLogService;
 use Verleihliste\Services\EquipmentRentalService;
 use Verleihliste\Services\EquipmentSettingsService;
 use Exception;
@@ -172,7 +176,6 @@ class ContentController extends Controller
      * @param EquipmentRentalService $rentalService
      * @return string
      */
-
     public function findUser($name,EquipmentRentalService $rentalService)
     {
         $users = $rentalService->findUser($name);
@@ -189,6 +192,27 @@ class ContentController extends Controller
     {
         $device = $rentalService->createItem($request);
         return json_encode($device);
+    }
+
+    /**
+     * List log entries
+     *
+     * @param Request $request
+     * @param EquipmentRentalLogService $logService
+     * @return string
+     */
+    public function log(Request $request, EquipmentRentalLogService $logService): string
+    {
+        $page = $request->get('page',1);
+        $itemsPerPage = $request->get('itemsPerPage',25);
+        $sortBy = $request->get("sortBy", 'id');
+        $sortOrder = $request->get("sortOrder", 'desc');
+        $userId = $request->get('user',0);
+        $variationId = $request->get('device',0);
+        $filter = [
+            'name' => $request->get("name")
+        ];
+        return json_encode($logService->getLog($page, $itemsPerPage, $filter, $sortBy, $sortOrder,$userId, $variationId));
     }
 
 }

@@ -92,13 +92,25 @@ class EquipmentRentalLogService
         $rentalService = pluginApp(EquipmentRentalService::class);
         $result = [];
         foreach ($entries as $rentalItem) {
-            $rentalItem->rentalItem = $rentalService->getNameByVariationId($rentalItem->rentalItem);
+            $variation = $rentalService->getVariationById($rentalItem->rentalItem);
+            if(!is_null($variation)){
+                $variation = (array) $variation;
+                $name = 'UNKNOWN';
+                if(!empty($variation["name"])){
+                    $name = $variation["name"];
+                }
+                elseif(!empty($variation["name1"])){
+                    $name = $variation["name1"];
+                }
+                $rentalItem->rentalItemName = $name;
+                $rentalItem->itemId = $variation['itemId'];
+            }
             try{
                 $user = $this->userRepo->getUserById($rentalItem->userId);
-                $rentalItem->userId = $user->realName;
+                $rentalItem->userName = $user->realName;
             }
             catch(Exception $e){
-                $rentalItem->userId = 'UNKNOWN USER BY ID: '.$rentalItem->userId;
+                $rentalItem->userName = 'UNKNOWN USER BY ID: '.$rentalItem->userId;
             }
             $result[] = $rentalItem;
         }

@@ -69,6 +69,8 @@ class EquipmentRentalService
     /** @var DataBase $database */
     private $database;
 
+    private $variations = [];
+
     public function __construct(RentalItemRepositoryContract $rentalItemRepo,
         ContactRepositoryContract $contactRepo,
         UserRepositoryContract $userRepository,
@@ -674,5 +676,23 @@ class EquipmentRentalService
         $rentalDevice->getBackDate = $device["getBackDate"];
         $rentalDevice->status = $device['status'] ?? 0;
         return $rentalDevice;
+    }
+
+    /**
+     * Get variation by id
+     *
+     * @param int $id
+     * @return Variation
+     */
+    public function getVariationById(int $id)
+    {
+        if(isset($this->variations[$id])){
+            return $this->variations[$id];
+        }
+        $variationRepository = pluginApp(VariationRepositoryContract::class);
+        /** @var Variation $result */
+        $result = $variationRepository->show($id,[],$this->language);
+        $this->variations[$id] = $result;
+        return $result;
     }
 }

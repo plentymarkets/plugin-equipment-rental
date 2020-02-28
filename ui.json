@@ -19,6 +19,12 @@
       "menu": "item",
       "urlKey": "equipmentRental-manage",
       "entryPoint": "index.html#/plugin/manage"
+    },
+    {
+      "label": "Verleihliste-Log",
+      "menu": "data-exchange",
+      "urlKey": "equipmentRental-log",
+      "entryPoint": "index.html#/plugin/log"
     }
   ]
 }
